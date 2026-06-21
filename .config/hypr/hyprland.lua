@@ -33,7 +33,7 @@ hl.monitor({
 ---------------------
 local terminal    = "kitty"
 local fileManager = "dolphin"
-local menu        = "hyprlauncher"
+local menu        = "rofi -show drun"
 
 -------------------
 ---- AUTOSTART ----
@@ -227,13 +227,16 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(
     "command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"
 ))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(
+    "rofi -show drun"
+))
 
 -- ┌─────────────────────────────────────────┐
 -- │  FENÊTRES                               │
 -- └─────────────────────────────────────────┘
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+--hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+--hhl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))   -- dwindle only
 
 -- Focus avec SUPER + flèches
@@ -249,10 +252,10 @@ hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 
 -- Redimensionner avec SUPER + ALT + flèches
-hl.bind(mainMod .. " + ALT + left",  hl.dsp.window.resize({ x = -50, y = 0   }), { repeating = true })
-hl.bind(mainMod .. " + ALT + right", hl.dsp.window.resize({ x = 50,  y = 0   }), { repeating = true })
-hl.bind(mainMod .. " + ALT + up",    hl.dsp.window.resize({ x = 0,   y = -50 }), { repeating = true })
-hl.bind(mainMod .. " + ALT + down",  hl.dsp.window.resize({ x = 0,   y = 50  }), { repeating = true })
+-- hl.bind(mainMod .. " + ALT + left",  hl.dsp.window.resize({ x = -50, y = 0   }), { repeating = true })
+-- hl.bind(mainMod .. " + ALT + right", hl.dsp.window.resize({ x = 50,  y = 0   }), { repeating = true })
+-- hl.bind(mainMod .. " + ALT + up",    hl.dsp.window.resize({ x = 0,   y = -50 }), { repeating = true })
+-- hl.bind(mainMod .. " + ALT + down",  hl.dsp.window.resize({ x = 0,   y = 50  }), { repeating = true })
 
 -- Move/resize à la souris
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
@@ -261,6 +264,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- ┌─────────────────────────────────────────┐
 -- │  WORKSPACES                             │
 -- └─────────────────────────────────────────┘
+
 
 -- Switch / déplacer vers workspace 1–10
 for i = 1, 10 do
@@ -280,11 +284,11 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 -- ┌─────────────────────────────────────────┐
 -- │  SCREENSHOTS  (nécessite grim + slurp)  │
 -- └─────────────────────────────────────────┘
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(
+    "grim -g \"$(slurp)\" - | wl-copy"
+))
 hl.bind("PRINT", hl.dsp.exec_cmd(
     "grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
-))
-hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd(
-    "grim -g \"$(slurp)\" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
 ))
 
 -- ┌─────────────────────────────────────────┐
@@ -335,4 +339,4 @@ hl.window_rule({
     match = { class = "hyprland-run" },
     move  = "20 monitor_h-120",
     float = true,
-})
+})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
